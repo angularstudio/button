@@ -7,12 +7,14 @@ import { StudioButton }     from './studio-button';
 
     template: `
 
-        <div class="wrapper">
+        <div class="wrapper" [class.collapsed]="collapsed">
 
             <button mat-raised-button [style.background-color]="button.backgroundColor"
                     [style.width]="button.width">
 
-                {{ button.label }}
+                <i *ngIf="button.iconClass" [class]="button.iconClass"></i>
+
+                <span *ngIf="!collapsed">{{ button.label }}</span>
 
             </button>
 
@@ -26,5 +28,6 @@ import { StudioButton }     from './studio-button';
 export class StudioButtonComponent {
 
     @Input() public button: StudioButton;
+    @Input() public collapsed: boolean;
 
 }
